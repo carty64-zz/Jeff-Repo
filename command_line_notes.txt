@@ -1,0 +1,80 @@
+commande line notes
+
+$ = 'shell prompt' which means terminal is ready to accept command
+
+ls = list files in current directory
+
+pwd = print working directory
+  this will show the name of the folder you are in
+
+cd = change directory. 'cd [directory name]' will take you to that directory
+
+'cd ..' = move up one directory
+
+'mkdir ____' = make directory
+
+'touch filename.extension' = creates file in the directory
+
+'ls -a' = list showing files that start with '.', which are hidden. '-a' is called an <i>option</i>. Options modify the behavior of commands.
+
+-a - lists all contents, including hidden files and directories
+-l - lists all contents of a directory in long format (as a table)
+-t - order files and directories by the time they were last modified.
+
+can use together, 'ls -alt'
+
+cp = copy. 'cp frida.txt lincoln.txt' copies content of 'frida' into 'lincoln'. Add directory to copy to a directory 'cp frida.text historical/
+
+wildcards: * (selects all)
+
+mv: moves files to other directories. also renames files
+  'mv batman.txt spiderman.txt' will rename 'batman.txt' to 'spiderman.txt'
+
+SOURCE --> DESTINATION
+CURRENT FILE NAME --> NEW FILE NAME
+
+rm: deletes files
+  -r = 'recursive' which will delete directories plus all child directories
+
+REDIRECTION
+
+stdin = standard input
+stdout = standard output
+stderr = standard error (for failed process)
+
+'>' redirects standard output. '$ echo "Hello" > hello.txt' will return
+
+'cat' = output contents of a file
+
+$ cat oceans.txt > continents.txt
+$ cat continents.txt
+[oceans listed]
+
+> takes the standard output of the command on the left, and redirects it to the file on the right (overwrites previous content).
+>> takes the standard output of the command on the left and appends (adds) it to the file on the right.
+
+< takes the standard input from the file on the right and inputs it into the program on the left.
+
+| is a "pipe". The | takes the standard output of the command on the left, and pipes it as standard input to the command on the right
+
+'sort' will sort alphabetically. '$ sort file/txt'
+
+'uniq' will only show unique values (removes CONSECUTIVE duplicates). More effective when sorted first
+
+'grep' = Global Regular Expression Print. Searches files for lines that match a pattern & returns the results.
+
+'grep -i Mount mountains.txt'
+
+'grep -i' enables the command to be case insensitive. Here, grep searches for capital or lowercase strings that match Mount in mountains.txt.
+
+'grep -R' searches all files in a directory and outputs file names.
+
+'$ grep -R Arctic /home/ccuser/workspace/geography'
+
+grep -R searches all files in a directory and outputs filenames and lines containing matched results. -R stands for "recursive". Here grep -R searches the /home/ccuser/workspace/geography directory for the string "Arctic" and outputs filenames and lines with matched results.
+
+'sed' = stream editor (similar to find and replace)
+
+$ sed 's[substitution]/snow[to find]/rain[replace with]/' filename.txt <-- only replaces first instance on a line
+
+adding '/g' (global) after word to be replaced with will replace ALL instances
