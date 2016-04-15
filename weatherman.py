@@ -15,18 +15,18 @@ try:
         if temp < 55:
             print temp
             GPIO.output(12, True)
-            time.sleep(10)
+            time.sleep(1200)
         elif temp > 55 and temp < 67:
             print temp
             GPIO.output(16, True)
-            time.sleep(10)
+            time.sleep(1200)
         elif temp >= 67:
             print temp
             GPIO.output(18, True)
-            time.sleep(10)
+            time.sleep(1200)
         else:
             print temp
-            time.sleep(10)
+            time.sleep(60)
 
 except KeyboardInterrupt:
     print "Interrupted :("
