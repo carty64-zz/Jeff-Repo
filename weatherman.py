@@ -6,6 +6,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setup(12, GPIO.OUT)
 GPIO.setup(16, GPIO.OUT)
 GPIO.setup(18, GPIO.OUT)
+GPIO.setwarnings(False)
 
 try:
     while(1):
@@ -13,19 +14,22 @@ try:
         json = m_json.loads(response)
         temp = json['currently']['temperature']
         if temp < 55:
-            print temp
+#            print temp
             GPIO.output(12, True)
             time.sleep(1200)
+            GPIO.output(12, False)
         elif temp > 55 and temp < 67:
-            print temp
+#            print temp
             GPIO.output(16, True)
             time.sleep(1200)
+            GPIO.output(16, False)
         elif temp >= 67:
-            print temp
+#            print temp
             GPIO.output(18, True)
             time.sleep(1200)
+            GPIO.output(18, False)
         else:
-            print temp
+#            print temp
             time.sleep(60)
 
 except KeyboardInterrupt:
