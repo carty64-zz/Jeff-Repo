@@ -9,7 +9,7 @@ GPIO.setup(18, GPIO.OUT)
 
 try:
     while(1):
-        response = urllib.urlopen ('https://api.forecast.io/forecast/825110f7ebd7effb56226b30bd4ab529/37.7782,-122.4122').read()
+        response = urllib.urlopen ('https://api.forecast.io/forecast/KEY/37.7782,-122.4122').read()
         json = m_json.loads(response)
         temp = json['currently']['temperature']
         if temp < 55:
