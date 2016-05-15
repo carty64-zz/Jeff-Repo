@@ -15,12 +15,12 @@ for index,account in enumerate(accounts.data):
 src = int(raw_input("From account? "))-1
 dest = int(raw_input("To account? "))-1
 amount = raw_input("Amount: ")
-amount = float(amount)
+note = raw_input("Transaction Note (optional): ")
 
 src_id = accounts[src]['id']
 dest_id = accounts[dest]['id']
 
-tx = client.transfer_money(src_id,dest_id,amount)
+tx = client.transfer_money(src_id,to=dest_id,amount=amount,currency='BTC',description=note)
 
 print tx
 
