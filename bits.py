@@ -2,7 +2,7 @@ from coinbase.wallet.client import Client
 
 SANDBOX_URL = 'https://api.sandbox.coinbase.com'
 client = Client('XkeNVpuPu8gg6ooT','AzOlNhddoZQaKjaEw2QXEjaO1I8Gqpgs',base_api_uri=SANDBOX_URL)
-
+JEFF
 accounts = client.get_accounts()
 wallets = []
 
@@ -10,7 +10,7 @@ for index,account in enumerate(accounts.data):
   name = account['name']
   balance = account.balance
   wallets.append(name)
-  print "%i) %s:  %s" % (index+1, name, balance)  
+  print "%i) %s:  %s" % (index+1, name, balance)
 
 src = int(raw_input("From account? "))-1
 dest = int(raw_input("To account? "))-1
@@ -44,4 +44,3 @@ print tx
 #  print account.get_transactions()
 
 #print accounts.data
-
