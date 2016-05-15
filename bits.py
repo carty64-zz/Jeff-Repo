@@ -2,7 +2,7 @@ from coinbase.wallet.client import Client
 
 SANDBOX_URL = 'https://api.sandbox.coinbase.com'
 client = Client('XkeNVpuPu8gg6ooT','AzOlNhddoZQaKjaEw2QXEjaO1I8Gqpgs',base_api_uri=SANDBOX_URL)
-JEFF
+
 accounts = client.get_accounts()
 wallets = []
 
