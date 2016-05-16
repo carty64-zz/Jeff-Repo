@@ -8,20 +8,15 @@ accounts = client.get_accounts()
 price = client.get_buy_price(currency='USD')
 price = float(price.amount)
 
+#print accounts.data
 
 for index,account in enumerate(accounts.data):
   if account['currency'] == 'USD':
     continue    
   name = account['name']
-<<<<<<< HEAD
   balance = account.balance.amount
   usd_value = float(balance) * price
   print "%i) %s: %s %s (%.2f USD)" % (index+1, name, balance, account.balance.currency, round(usd_value,2))  
-=======
-  balance = account.balance
-  wallets.append(name)
-  print "%i) %s:  %s" % (index+1, name, balance)
->>>>>>> a1b5637d5919e43d42ffe82e48a492f9f16a82aa
 
 src = int(raw_input("\nFrom account: "))-1
 dest = int(raw_input("To account: "))-1
@@ -56,23 +51,3 @@ print "\nNew balances:"
 print "%s: %.8f %s (%.2f USD)" % (accounts[src]['name'], new_src,accounts[src]['balance']['currency'],price*new_src)
 print "%s: %.8f %s (%.2f USD)" % (accounts[dest]['name'], new_dest,accounts[dest]['balance']['currency'],price*new_dest)
 
-
-#print wallets[src]
-#print amount
-#print wallets[dest]
-
-#try:
-#  while(1):
-#first = raw_input('From acct: 1)%s', wallets)
-
-#for account in accounts.data:
-#  print account.name
-
-
-#for account in accounts.data:
-#  balance = account.balance
-#  wallet_id = account.id
-#  print "%s: %s %s (%s)" % (account.name, balance.amount, balance.currency, wallet_id)
-#  print account.get_transactions()
-
-#print accounts.data
