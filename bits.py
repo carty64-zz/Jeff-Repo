@@ -13,9 +13,15 @@ for index,account in enumerate(accounts.data):
   if account['currency'] == 'USD':
     continue    
   name = account['name']
+<<<<<<< HEAD
   balance = account.balance.amount
   usd_value = float(balance) * price
   print "%i) %s: %s %s (%.2f USD)" % (index+1, name, balance, account.balance.currency, round(usd_value,2))  
+=======
+  balance = account.balance
+  wallets.append(name)
+  print "%i) %s:  %s" % (index+1, name, balance)
+>>>>>>> a1b5637d5919e43d42ffe82e48a492f9f16a82aa
 
 src = int(raw_input("\nFrom account: "))-1
 dest = int(raw_input("To account: "))-1
