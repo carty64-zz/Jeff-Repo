@@ -1,8 +1,11 @@
 from coinbase.wallet.client import Client
 import sys
+import os
 
 SANDBOX_URL = 'https://api.sandbox.coinbase.com'
-client = Client('XkeNVpuPu8gg6ooT','AzOlNhddoZQaKjaEw2QXEjaO1I8Gqpgs',base_api_uri=SANDBOX_URL)
+API_KEY = os.environ["CB_API"]
+API_SECRET = os.environ["CB_SECRET"]
+client = Client(API_KEY,API_SECRET,base_api_uri=SANDBOX_URL)
 
 accounts = client.get_accounts()
 price = client.get_buy_price(currency='USD')

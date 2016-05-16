@@ -1,6 +1,8 @@
 import time
 from slackclient import SlackClient
-token = "xoxb-31174033648-2rFG6jud5QpjJnlA0qLBSLPC"
+import os
+
+token = os.environ["JAZZBOT_KEY"]
 
 sc = SlackClient(token)
 

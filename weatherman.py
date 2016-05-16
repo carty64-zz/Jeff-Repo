@@ -2,38 +2,43 @@ import urllib
 import json as m_json
 import RPi.GPIO as GPIO
 import time
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(12, GPIO.OUT)
-GPIO.setup(16, GPIO.OUT)
-GPIO.setup(18, GPIO.OUT)
+import os
+
+GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
+
+KEY = os.environ["WEATHER_API"]
 
 try:
     while(1):
-        response = urllib.urlopen ('https://api.forecast.io/forecast/KEY/37.7782,-122.4122').read()
+        response = urllib.urlopen ('https://api.forecast.io/forecast/%s/37.7782,-122.4122'%KEY).read()
         json = m_json.loads(response)
         temp = json['currently']['temperature']
-        if temp < 55:
-#            print temp
+        temp = round(temp, 1)
+#        print temp
+#        print temp < 56
+#        print 56 < temp < 67
+#        print temp >= 67
+        if temp < 56.0:
+            GPIO.setup(11, GPIO.OUT)
+            GPIO.output(11, True)
+            time.sleep(600)
+            GPIO.output(11, False)
+        elif 56.0 < temp < 67.0:
+            GPIO.setup(12, GPIO.OUT)
             GPIO.output(12, True)
-            time.sleep(1200)
+            time.sleep(600)
             GPIO.output(12, False)
-        elif temp > 55 and temp < 67:
-#            print temp
-            GPIO.output(16, True)
-            time.sleep(1200)
-            GPIO.output(16, False)
-        elif temp >= 67:
-#            print temp
-            GPIO.output(18, True)
-            time.sleep(1200)
-            GPIO.output(18, False)
+        elif temp >= 67.0:
+            GPIO.setup(13, GPIO.OUT)
+            GPIO.output(13, True)
+            time.sleep(600)
+            GPIO.output(13, False)
         else:
-#            print temp
             time.sleep(60)
 
 except KeyboardInterrupt:
-    print "Interrupted :("
+    print " Interrupted :("
 
 finally:
     GPIO.cleanup()

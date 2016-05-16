@@ -1,13 +1,16 @@
 import time
 from slackclient import SlackClient
-token = "xoxb-31174033648-2rFG6jud5QpjJnlA0qLBSLPC"
+import os
+
+token = os.environ["JAZZBOT_KEY"]
+print token
 
 sc = SlackClient(token)
 
 print sc.api_call(
     "chat.postMessage", channel="#lower_bowl", text="With a gentle push and a mild arc, the old Jazzbot hits home :basketball:",
-    username='jazzbot', icon_emoji=:basketball:
-)
+    username='jazzbot', icon_emoji=':basketball:'
+    )
 
 if sc.rtm_connect():
   while(1):
