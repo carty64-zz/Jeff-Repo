@@ -19,7 +19,7 @@ while 1:
     name = account['name']
     balance = account.balance.amount
     usd_value = float(balance) * price
-    print "%i) %s: %s %s (%.2f USD)" % (index+1, name, balance, account.balance.currency, round(usd_value,2))  
+    print "%i) %s: %s %s ($%.2f)" % (index+1, name, balance, account.balance.currency, round(usd_value,2))  
 
   src = int(raw_input("\nFrom account: "))-1
   dest = int(raw_input("To account: "))-1
@@ -27,7 +27,7 @@ while 1:
     sys.exit("Source and destination are the same")
 
   amount = raw_input("Amount: ")
-
+  amount_usd = float(amount) * price
   #def transaction():
   if float(amount) > float(accounts[src]['balance']['amount']):
     sys.exit("\nYou don't have that much bitcoin.")
@@ -37,7 +37,7 @@ while 1:
   src_id = accounts[src]['id']
   dest_id = accounts[dest]['id']
 
-  print "\nAbout to send\n%s BTC from %s to %s\n" % (amount, accounts[src]['name'], accounts[dest]['name'])
+  print "\nAbout to send\n%s BTC ($%.2f) from %s to %s\n" % (amount, amount_usd, accounts[src]['name'], accounts[dest]['name'])
   proceed = raw_input("Is this correct? Y/N: ")
   proceed = proceed.lower()
 
@@ -54,10 +54,10 @@ while 1:
   new_dest = float(new_dest)
 
   print "\nNew balances:"
-  print "%s: %.8f %s (%.2f USD)" % (accounts[src]['name'], new_src,accounts[src]['balance']['currency'],price*new_src)
-  print "%s: %.8f %s (%.2f USD)" % (accounts[dest]['name'], new_dest,accounts[dest]['balance']['currency'],price*new_dest)
+  print "%s: %.8f %s ($%.2f)" % (accounts[src]['name'], new_src,accounts[src]['balance']['currency'],price*new_src)
+  print "%s: %.8f %s ($%.2f)" % (accounts[dest]['name'], new_dest,accounts[dest]['balance']['currency'],price*new_dest)
 
-  new_txn = raw_input("Another transaction? Y/N: ")
+  new_txn = raw_input("\nAnother transaction? Y/N: ")
   new_txn = new_txn.lower()
 
   if new_txn == 'n':
