@@ -19,12 +19,12 @@ try:
 #        print temp < 56
 #        print 56 < temp < 67
 #        print temp >= 67
-        if temp < 56.0:
+        if temp < 57.0:
             GPIO.setup(11, GPIO.OUT)
             GPIO.output(11, True)
             time.sleep(600)
             GPIO.output(11, False)
-        elif 56.0 < temp < 67.0:
+        elif 57.0 < temp < 67.0:
             GPIO.setup(12, GPIO.OUT)
             GPIO.output(12, True)
             time.sleep(600)
