@@ -4,7 +4,7 @@ import time
 import os
 # -*- coding: UTF-8 -*-
 
-DS_API = os.environ["DARK_SKY"]
+DS_API = os.environ["WEATHER_API"]
 response = urllib.urlopen ('https://api.forecast.io/forecast/%s/37.7782,-122.4122' % DS_API).read()
 json = json.loads(response)
 
