@@ -24,7 +24,7 @@ while 1:
   src = int(raw_input("\nFrom account: "))-1
   dest = int(raw_input("To account: "))-1
   if src == dest:
-    sys.exit("Source and destination are the same")
+    sys.exit("Source and destination cannot be the same")
 
   amount = raw_input("Amount: ")
   amount_usd = float(amount) * price
