@@ -5,8 +5,9 @@ import datetime
 import time
 
 print time.time()
-todays_date =  datetime.date.today().strftime("%Y%m%d")
-url = 'http://data.nba.com/data/json/nbacom/2015/gameline/%s/games.json' % (todays_date)
+#todays_date =  datetime.date.today().strftime("%Y%m%d")
+#url = 'http://data.nba.com/data/json/nbacom/2015/gameline/%s/games.json' % (todays_date)
+url = 'http://data.nba.com/data/json/nbacom/2015/gameline/20160325/games.json'
 response = urllib2.urlopen(url)
 data = response.read()
 data = json.loads(data)
@@ -18,10 +19,10 @@ print data
 #print gamedata
 game_ids = []
 
-for games in data['games']:
-  for teams in games['teams']:
-    #game_ids.append(str(teams['scores']))
-    print teams['scores']
+#for games in data['games']:
+#  for teams in games['teams']:
+#    game_ids.append(str(teams['scores']))
+#    print teams['scores']
 
 for x in game_ids:
   print x
