@@ -11,7 +11,7 @@ KEY = os.environ["WEATHER_API"]
 
 try:
     while(1):
-        response = urllib.urlopen ('https://api.forecast.io/forecast/%s/37.7782,-122.4122'%KEY).read()
+        response = urllib.urlopen ('https://api.darksky.net/forecast/%s/37.7782,-122.4122'%KEY).read()
         json = m_json.loads(response)
         temp = json['currently']['temperature']
         temp = round(temp, 1)
