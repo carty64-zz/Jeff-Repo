@@ -59,8 +59,8 @@ token = "xoxb-31174033648-2rFG6jud5QpjJnlA0qLBSLPC"
 sc = SlackClient(token)
 
 today =  datetime.date.today().strftime("%Y%m%d")
-url = 'http://data.nba.com/data/10s/json/nbacom/2015/gameline/%s/games.json' % today
-#url = 'http://data.nba.com/data/10s/json/nbacom/2015/gameline/20160331/games.json'
+url = 'http://data.nba.com/data/10s/json/nbacom/2016/gameline/%s/games.json' % today
+#url = 'http://data.nba.com/data/10s/json/nbacom/2016/gameline/20160331/games.json'
 response = requests.get(url)
 data = response.content
 nbadata = json.loads(data)
