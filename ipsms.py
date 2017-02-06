@@ -1,3 +1,5 @@
+#iwconfig wlan0 | grep "ESSID" | cut -d\" -f2
+#ip addr show wlan0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1
 from twilio.rest import TwilioRestClient
 import os
 from subprocess import *
@@ -11,7 +13,7 @@ twilio = os.environ["TWILIO_NUM"]
 client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
 ip = "ip addr show wlan0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1"
-ssid = 'iwconfig wlan0 | grep "ESSID" | cut -d: -f2'
+ssid = 'iwconfig wlan0 | grep ESSID | cut -d\" -f2'
 device = "hostname"
 def get_device(device):
         p = Popen(device, shell=True, stdout=PIPE)
