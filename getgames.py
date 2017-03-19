@@ -7,7 +7,7 @@ import time
 print time.time()
 todays_date =  datetime.date.today().strftime("%Y%m%d")
 #url = 'http://data.nba.com/data/json/nbacom/2016/gameline/%s/games.json' % (todays_date)
-url = 'http://stats.nba.com/scores/#!/03/19/2017'
+url = 'http://stats.nba.com/game/#!/0021601036/'
 response = urllib2.urlopen(url)
 data = response.read()
 #data = json.loads(data)
