@@ -7,9 +7,7 @@ token = os.environ["JAZZBOT_KEY"]
 sc = SlackClient(token)
 
 #user can set a favorite team
-def favs():
-
-
+#def favs():
 
 
 def scores():
@@ -21,7 +19,7 @@ if sc.rtm_connect():
         print message
         time.sleep(1)
         if len(message) > 0 and message[0].has_key('type') and message[0]['type'] == 'message':
-            if <@jazzbot> in message[0]['text'] and "scores" in message[0]['text'].lower:
+            if '@U0X540ZK2' in message[0]['text'] and 'scores' in message[0]['text'].lower():
                 scores()
 
 else:
