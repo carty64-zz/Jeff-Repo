@@ -6,9 +6,14 @@ from picamera import PiCamera
 camera = PiCamera()
 camera.framerate = 30
 pir = MotionSensor(4)
+
 while True:
 	pir.wait_for_motion()
-	filename = datetime.now().strftime("%Y-%m-%d_%H.%M.%S.h264")
-	camera.start_recording(filename)
+	filename = datetime.now().strftime("%Y-%m-%d-%H.%M.%S.jpg")
+	camera.capture('/home/pi/Desktop/camera_pics/%s' % filename)
+#.h264")
+#	sleep(0.5)
+#	camera.start_recording(filename)
 	pir.wait_for_no_motion()
-	camera.stop_recording()
+	sleep(1)
+#	camera.stop_recording()
