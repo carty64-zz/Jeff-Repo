@@ -8,7 +8,6 @@ import sqlite3
 from slackclient import SlackClient
 import os
 
-#xoxb-31174033648-jkTfRMnKNfCF931gH8CIdVD0
 token = os.environ["JAZZBOT_KEY"]
 conn = sqlite3.connect('monitoring.db')
 c = conn.cursor()
