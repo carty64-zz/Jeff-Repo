@@ -16,15 +16,14 @@ sc = SlackClient(token)
 
 camera = PiCamera()
 camera.framerate = 60
-pir = MotionSensor(17)
-camera.resolution = (800,600)
-camera.rotation = 90
+pir = MotionSensor(4)
+camera.resolution = (1280,960)
 camera.annotate_background = Color('black')
 camera.hflip = True
 
 
 if sc.rtm_connect():
-
+  posttime = 0
   while True:
     pir.wait_for_motion()
     sleep(0.5)
@@ -37,16 +36,17 @@ if sc.rtm_connect():
       conn.commit()
     except Exception as e:
       print e
-
-    try:
-      sc.api_call(
-       'files.upload',
-       channels="#jazzbot_test",
-       filename='Motion Detected',
-       file=open('/home/pi/Desktop/Motion_Pics/%s.jpg' % filename, 'rb')
-      )
-    except Exception as e:
-      print e
+    if posttime == 0 or posttime - datetime.datetime.now().time() > 8:
+      try:      
+        sc.api_call(
+         'files.upload',
+         channels="#jazzbot_test",
+         filename='Motion Detected',
+         file=open('/home/pi/Desktop/Motion_Pics/%s.jpg' % filename, 'rb')
+         )
+        posttime = datetime.datetime.now().time()
+      except Exception as e:
+        print e
 
 #    pir.wait_for_no_motion()
 #    camera.stop_recording()
