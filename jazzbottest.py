@@ -19,11 +19,7 @@ if sc.rtm_connect():
     if len(message) > 0 and message[0].has_key('type') and message[0]['type'] == 'message':
       channel = message[0]['channel']
       if 'hood' in message[0]['text'].lower():
-        print sc.api_call
-        (
-          "chat.postMessage", channel = channel, text=":thermometer:",
-          username='jazzbot', icon_emoji=':basketball:'
-        )
+        print sc.api_call("chat.postMessage", channel = channel, text=":thermometer:", username='jazzbot', icon_emoji=':basketball:')
         #                 elif '@U0X540ZK2' in message[0]['text'] and 'temp c' in message[0]['text'].lower():
         #                   temp_c = round(sensor.get_temperature(W1ThermSensor.DEGREES_C),1)
         #                   print sc.api_call(
