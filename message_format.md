@@ -8,15 +8,16 @@ Typing
 ]
 
 Message sent
-[
-  {
-  u'text': u'asdf', 
-  u'ts': u'1459744041.000015', 
-  u'user': u'U0VKUB5SQ', 
-  u'team': u'T0VL4KPGV', 
-  u'type': u'message', 
-  u'channel': u'G0XFPT083'
-  }
+[  
+    {  
+    u'source_team':u'T0VL4KPGV',
+    u'text':u'message goes here',
+    u'ts':u'1507448709.000024',
+    u'user':u'U0VKUB5SQ',
+    u'team':u'T0VL4KPGV',
+    u'type':u'message',
+    u'channel':u'C0VJNAFD1'
+    }
 ]
 
 Message edited
