@@ -11,6 +11,7 @@ import wildcard
 
 token = os.environ["CHAT_KEY"]
 sc = SlackClient(token)
+chatbot = '<@U7F2D8W90>'
 
 channel_info = sc.api_call(
     "groups.info",channel = 'G0XFPT083')
@@ -24,8 +25,6 @@ for member_id in member_ids:
   if user_info['user']['deleted'] == False and user_info['user']['is_bot'] == False:
     member_names.append("<@" + user_info['user']['name'] + ">")
 
-
-#chatbot id is @U7F2D8W90
 if sc.rtm_connect():
   while True:
     message = sc.rtm_read()
@@ -33,9 +32,11 @@ if sc.rtm_connect():
     sleep(1)
     if len(message) > 0 and message[0].has_key('type') and message[0]['type'] == 'message':
       text = message[0]['text']
-      if '@U7F2D8W90' in text:
+      if chatbot in text:
         text = text.lower()
         if 'random' in text:
-          wildcard.wildcard(member_names)	
+          wildcard.wildcard(member_names)
+	  print wildcard.name()	
         if 'smile' in text:
           sc.api_call("chat.postMessage", channel="jazzbot_test", text=":smile:", as_user = 'true')
+
