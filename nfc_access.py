@@ -1,8 +1,23 @@
+#!/usr/bin/python
+
+import Adafruit_CharLCD as LCD
 import binascii
 import sys
 from time import sleep
 import Adafruit_PN532 as PN532
 
+# Configure LCD
+lcd_rs        = 06
+lcd_en        = 13
+lcd_d4        = 20
+lcd_d5        = 17
+lcd_d6        = 21
+lcd_d7        = 22
+lcd_backlight = 4
+lcd_columns = 16
+lcd_rows    = 2
+lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,lcd_columns, lcd_rows, lcd_backlight)
+lcd.clear()
 
 # Configuration for a Raspberry Pi:
 CS   = 18
@@ -31,9 +46,12 @@ inactive = 'invalid'
 keys = open('keys.txt','r')
 key_list = eval(keys.read())
 keys.close()
+lcd.clear()
 
 # Main loop to detect cards and read a block.
-print('Waiting...')
+lcd.message('Waiting...')
+lcd.blink(True)
+
 while True:
     # Check if a card is available to read.
     uid = pn532.read_passive_target()
@@ -42,8 +60,14 @@ while True:
         continue
     uid = binascii.hexlify(uid)
     if uid in key_list and key_list[uid][1]==active:
-        print 'ACCESS GRANTED. HELLO '+key_list[uid][0].upper()
+        lcd.clear()
+        lcd.blink(False)
+        lcd.message('ACCESS GRANTED.\nHELLO '+key_list[uid][0].upper())
     else:
-        print 'ACCESS DENIED'
-    sleep(1.4)
-    print('Waiting...')
+        lcd.clear()
+        lcd.blink(False)
+        lcd.message('ACCESS DENIED')
+        sleep(2.0)
+        lcd.clear()
+    lcd.message('Waiting...')
+    lcd.blink(True)
