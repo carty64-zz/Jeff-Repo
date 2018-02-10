@@ -59,15 +59,13 @@ while True:
     if uid is None:
         continue
     uid = binascii.hexlify(uid)
+    lcd.clear()
+    lcd.blink(False)
     if uid in key_list and key_list[uid][1]==active:
-        lcd.clear()
-        lcd.blink(False)
         lcd.message('ACCESS GRANTED.\nHELLO '+key_list[uid][0].upper())
     else:
-        lcd.clear()
-        lcd.blink(False)
         lcd.message('ACCESS DENIED')
-        sleep(2.0)
-        lcd.clear()
+    sleep(2.0)
+    lcd.clear()
     lcd.message('Waiting...')
     lcd.blink(True)
