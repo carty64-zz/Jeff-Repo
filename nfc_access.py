@@ -5,6 +5,7 @@ import binascii
 import sys
 from time import sleep
 import Adafruit_PN532 as PN532
+import json
 
 # Configure LCD
 lcd_rs        = 06
@@ -42,17 +43,15 @@ pn532.SAM_configuration()
 # Load keys dictionary
 active = 'active'
 inactive = 'invalid'
+keys = json.load(open('keys.json'))
 
-keys = open('keys.txt','r')
-key_list = eval(keys.read())
-keys.close()
 lcd.clear()
 
-# Main loop to detect cards and read a block.
-lcd.message('Waiting...')
-lcd.blink(True)
-
+# Main loop to detect cards
 while True:
+    lcd.clear()
+    lcd.message('READY...')
+    lcd.blink(True)
     # Check if a card is available to read.
     uid = pn532.read_passive_target()
     # Try again if no card is available.
@@ -61,11 +60,9 @@ while True:
     uid = binascii.hexlify(uid)
     lcd.clear()
     lcd.blink(False)
-    if uid in key_list and key_list[uid][1]==active:
-        lcd.message('ACCESS GRANTED.\nHELLO '+key_list[uid][0].upper())
+    if uid in keys and keys[uid][1]==active:
+        lcd.message('ACCESS GRANTED.\nHELLO '+keys[uid][0].upper())
     else:
         lcd.message('ACCESS DENIED')
-    sleep(2.0)
+    sleep(2.5)
     lcd.clear()
-    lcd.message('Waiting...')
-    lcd.blink(True)
