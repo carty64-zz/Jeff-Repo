@@ -20,10 +20,6 @@ WIDTH = 128
 HEIGHT = 64
 BORDER = 5
 
-# Use for I2C.
-#i2c = board.I2C()
-#oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=0x3c, reset=oled_reset)
-
 # Use for SPI
 spi = board.SPI()
 oled_cs = digitalio.DigitalInOut(board.D5)
@@ -52,7 +48,7 @@ draw.rectangle((BORDER, BORDER, oled.width - BORDER - 1, oled.height - BORDER - 
 font = ImageFont.load_default()
 
 # Draw Some Text
-text = "BOOBS!"
+text = "ACCESS DENIED"
 (font_width, font_height) = font.getsize(text)
 draw.text((oled.width//2 - font_width//2, oled.height//2 - font_height//2),
           text, font=font, fill=255)
