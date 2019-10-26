@@ -1,23 +1,25 @@
 #!/usr/bin/python
 
-import Adafruit_CharLCD as LCD
+import board
+import digitalio
+import adafruit_character_lcd.character_lcd as character_lcd
 import binascii
 import sys
 from time import sleep
-import Adafruit_PN532 as PN532
 import json
+import Adafruit_PN532 as PN532
 
 # Configure LCD
-lcd_rs        = 06
-lcd_en        = 13
-lcd_d4        = 20
-lcd_d5        = 17
-lcd_d6        = 21
-lcd_d7        = 22
-lcd_backlight = 4
+lcd_rs =    digitalio.DigitalInOut(board.D6)
+lcd_en =    digitalio.DigitalInOut(board.D13)
+lcd_d4 =    digitalio.DigitalInOut(board.D20)
+lcd_d5 =    digitalio.DigitalInOut(board.D17)
+lcd_d6 =    digitalio.DigitalInOut(board.D21)
+lcd_d7 =    digitalio.DigitalInOut(board.D22)
+lcd_backlight = digitalio.DigitalInOut(board.D4)
 lcd_columns = 16
 lcd_rows    = 2
-lcd = LCD.Adafruit_CharLCD(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7,lcd_columns, lcd_rows, lcd_backlight)
+lcd = character_lcd.Character_LCD_Mono(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows, lcd_backlight)
 lcd.clear()
 
 # Configuration for a Raspberry Pi:
