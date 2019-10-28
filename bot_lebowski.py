@@ -1,11 +1,10 @@
 import time
-from slackclient import SlackClient
+import slack
 import os
 import random
 
 token = os.environ["LEBOWS_KEY"]
-
-sc = SlackClient(token)
+sc = slack.WebClient(token)
 
 quotes={1:"Well that's just, like, your opinion, man."
         ,2:"Shut the fuck up, Donny!"
@@ -22,7 +21,7 @@ quotes={1:"Well that's just, like, your opinion, man."
         ,13:"Hey, this is a private residence man."
         ,14:"Obviously you're not a golfer."
         ,15:"Am I the only one who gives a shit about the rules?!"
-        ,16:"The Chinaman is not the issue here... also Dude, Asian American please."        
+        ,16:"The Chinaman is not the issue here... also Dude, Asian American please."
         ,17:"This will not stand, ya know, this aggression will not stand, man."
         ,18:"Walter, I love you, but sooner or later you're going to have to face the fact you're a goddamn moron."
         ,19:"Lady, I got buddies who died face down in the muck so that you and I could enjoy this family restaurant!"
@@ -36,9 +35,7 @@ while 1:
     m = quotes[x]
     return m
 
-  sc.api_call(
-    "chat.postMessage", channel="#lower_bowl", text=quote(),
-    username='bot lebowski', icon_emoji=':sunglasses:'
+  sc.chat_postMessage(
+    channel="#lower_bowl", text=quote(), username='bot lebowski', icon_emoji=':sunglasses:'
     )
   time.sleep(s)
-
