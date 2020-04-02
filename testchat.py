@@ -4,7 +4,7 @@ from collections import defaultdict
 from datetime import datetime
 from time import time, sleep
 import sqlite3
-from slackclient import SlackClient
+import slack
 import os
 
 token = os.environ["CHATBOT"]
